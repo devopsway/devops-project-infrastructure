@@ -1,5 +1,6 @@
 # devops-project-infrastructure
-This repo contains infrastructure code
+- This repo contains infrastructure code
+- Project manifest located here: https://github.com/devopsway/devops-project-manifest
 
 # How to use?
 1. Install terraform cli: https://developer.hashicorp.com/terraform/tutorials/aws-get-started/install-cli
