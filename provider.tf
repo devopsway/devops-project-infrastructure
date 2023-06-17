@@ -1,9 +1,9 @@
 terraform {
 
-  backend "gcs" {
-    bucket = "dev-app-project-bucket-tfstate"
-    prefix = "terraform/state"
-  }
+  # backend "gcs" {
+  #   bucket = "dev-app-project-bucket-tfstate"
+  #   prefix = "terraform/state"
+  # }
 
   required_providers {
     google = {
