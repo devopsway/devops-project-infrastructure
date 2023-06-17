@@ -10,15 +10,15 @@
 ```shell
 gcloud auth application-default login --no-launch-browser
 ```
-4. Clone this repo:
+5. Clone this repo:
 ```
 git clone https://github.com/devopsway/devops-project-infrastructure.git
 ```
-5. `cd` in the folder
+6. `cd` in the folder
 ```
 cd devops-project-infrastructure
 ```
-6. Create infrastructure with terraform
+7. Create infrastructure with terraform
 ```
 terraform plan
 terraform apply
