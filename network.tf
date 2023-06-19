@@ -15,7 +15,12 @@ resource "google_compute_firewall" "http" {
   target_tags   = ["web"]
   source_ranges = ["0.0.0.0/0"]
 
+  log_config {
+    metadata = "INCLUDE_ALL_METADATA"
+  }
+
 }
+
 
 resource "google_compute_network" "network" {
   name    = "dev-network"
