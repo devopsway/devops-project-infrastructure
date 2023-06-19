@@ -1,8 +1,9 @@
 resource "google_compute_instance" "default" {
-  project      = google_project.my_project.project_id
-  name         = "dev-app-vm"
-  machine_type = "e2-small"
-  zone         = "asia-southeast1-b"
+  project                   = google_project.my_project.project_id
+  name                      = "dev-app-vm"
+  machine_type              = "e2-small"
+  zone                      = "asia-southeast1-b"
+  allow_stopping_for_update = true
 
   boot_disk {
     initialize_params {
@@ -10,15 +11,20 @@ resource "google_compute_instance" "default" {
       size  = 50
     }
   }
-
-
-
   network_interface {
-    network = "default"
+    subnetwork = "dev-network"
 
     access_config {
-      // Ephemeral public IP
+      nat_ip = google_compute_address.dev_static_ip.address
     }
+  }
+
+  tags = ["web"]
+
+  lifecycle {
+    ignore_changes = [
+      metadata
+    ]
   }
 
 }
