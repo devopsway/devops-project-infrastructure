@@ -9,10 +9,10 @@ resource "google_compute_firewall" "http" {
 
   allow {
     protocol = "tcp"
-    ports    = ["80", "443"]
+    ports    = ["80", "443", "22"]
   }
 
-  target_tags   = ["web"]
+  target_tags   = ["web", "jenkins"]
   source_ranges = ["0.0.0.0/0"]
 
   log_config {
