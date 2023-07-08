@@ -63,3 +63,36 @@ resource "google_compute_instance" "jenkins" {
 
 }
 
+resource "google_compute_instance" "monitor" {
+  project                   = google_project.my_project.project_id
+  name                      = "dev-monitor-vm"
+  machine_type              = "e2-small"
+  zone                      = "asia-southeast1-b"
+  allow_stopping_for_update = true
+
+  boot_disk {
+    initialize_params {
+      image = "ubuntu-os-cloud/ubuntu-2204-lts"
+      size  = 50
+    }
+  }
+  network_interface {
+    subnetwork = google_compute_network.network.name
+    subnetwork_project = google_project.my_project.project_id
+    
+
+    access_config {
+      nat_ip = google_compute_address.dev_monitor_static_ip.address
+    }
+  }
+
+  tags = ["monitor"]
+
+  lifecycle {
+    ignore_changes = [
+      metadata
+    ]
+  }
+
+}
+

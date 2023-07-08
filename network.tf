@@ -12,7 +12,7 @@ resource "google_compute_firewall" "http" {
     ports    = ["80", "443", "22"]
   }
 
-  target_tags   = ["web", "jenkins"]
+  target_tags   = ["web", "jenkins", "monitor"]
   source_ranges = ["0.0.0.0/0"]
 
   log_config {
